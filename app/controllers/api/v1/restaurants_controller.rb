@@ -5,6 +5,6 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-    render json: RestaurantSerializer.new(@restaurants).serializable_hash
+    render json: RestaurantSerializer.new(Restaurant.all, include: %i[comments pictures]).serializable_hash
   end
 end
